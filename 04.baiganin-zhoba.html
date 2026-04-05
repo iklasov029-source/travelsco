@@ -1,0 +1,482 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Маңғыстау — Киелі жерлер</title>
+  <style>
+    :root{
+      --bg:#f8fafc; --card:#ffffff; --muted:#6b7280; 
+      --accent:#06b6d4; --accent-2:#f97316; --glass: rgba(15,23,42,0.04);
+      --radius:14px; --shadow: 0 6px 20px rgba(2,6,23,0.06);
+      --maxw:1100px;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+  margin:0;
+  font-family:Inter, system-ui, -apple-system, 'Segoe UI', Roboto, Arial;
+  color:#0f1724;
+  background:
+    /* Ақ қабатты жеңілдеттік — сурет айқынырақ болады */
+    linear-gradient(rgba(255,255,255,0.55), rgba(255,255,255,0.65)),
+    url('https://adamdar.ca/media/posts/220/5fba77e870ab0.jpg') no-repeat right center;
+  
+  /* Фон суретті үлкейтіп, көрініс пайызын арттырамыз */
+  background-size: 130%;
+  
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+
+
+    header{display:flex;align-items:center;gap:14px;padding:22px 20px;max-width:var(--maxw);margin:24px auto}
+    .logo{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--accent),var(--accent-2));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:700;box-shadow:var(--shadow)}
+    h1{font-size:18px;margin:0}
+    p.lead{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+
+    .container{max-width:var(--maxw);margin:18px auto;padding:0 16px}
+    .controls{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-bottom:18px}
+    input[type=text]{width:100%;padding:12px 14px;border-radius:12px;border:1px solid var(--glass);background:transparent;outline:none;font-size:14px}
+    .filters{display:flex;gap:8px}
+    .chip{padding:8px 12px;border-radius:999px;border:1px solid var(--glass);background:transparent;cursor:pointer;font-size:13px;transition:.3s}
+    .chip.active,.chip:hover{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:0;box-shadow:0 6px 18px rgba(6,182,212,0.14)}
+
+    .layout{display:grid;grid-template-columns:1fr 360px;gap:20px}
+    @media(max-width:980px){.layout{grid-template-columns:1fr}}
+
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:18px}
+    .card{background:var(--card);border-radius:var(--radius);padding:14px;border:1px solid var(--glass);box-shadow:var(--shadow);display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:.3s}
+    .card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,23,42,0.08)}
+    .thumb{width:86px;height:86px;border-radius:10px;background-size:cover;background-position:center;flex-shrink:0}
+    .meta h3{margin:0;font-size:15px}
+    .meta p{margin:6px 0 0 0;color:var(--muted);font-size:13px}
+    .tags{margin-top:10px;display:flex;gap:8px;flex-wrap:wrap}
+    .tag{font-size:12px;padding:6px 8px;border-radius:8px;background:rgba(6,182,212,0.08);color:var(--accent)}
+
+    .mapcard{background:var(--card);padding:12px;border-radius:12px;border:1px solid var(--glass);box-shadow:var(--shadow)}
+    iframe.map{width:100%;height:240px;border-radius:10px;border:0}
+
+    footer{text-align:center;margin:30px auto;color:var(--muted)}
+
+    .modal{position:fixed;inset:0;background:rgba(0,0,0,0.5);display:none;align-items:center;justify-content:center}
+    .modal.open{display:flex}
+    .modal-card{background:var(--card);border-radius:12px;padding:20px;max-width:900px;width:95%;display:grid;grid-template-columns:320px 1fr;gap:16px;box-shadow:0 30px 60px rgba(0,0,0,0.15)}
+    .big{height:280px;border-radius:10px;background-size:cover;background-position:center}
+    .btn{padding:10px 14px;border-radius:10px;background:linear-gradient(90deg,var(--accent),var(--accent-2));color:white;border:0;cursor:pointer}
+	
+	body {
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: right center;
+  background-repeat: no-repeat;
+}
+
+<head>
+  <meta charset="utf-8">
+  <title>Маңғыстау веб-сайты</title>
+  <style>
+    .dark {
+      background: #0f172a;
+      color: #f1f5f9;
+    }
+    .dark .card, .dark .mapcard {
+      background: #1e293b;
+      color: #e2e8f0;
+    }
+  </style>
+</head>
+<body>
+ <body>
+  <div id="intro">Маңғаз Маңғыстауға Қош келдіңіз!</div>
+
+  <header>
+    <h1>Түнгі режимді қосуға қалай қарайсың?</h1>
+    <button onclick="toggleDarkMode()" style="margin-top:10px;" class="btn">Dark mode</button>
+  </header>
+
+  <!-- басқа контент осында -->
+
+  <script>
+    function toggleDarkMode(){
+      document.body.classList.toggle('dark');
+    }
+  </script>
+</body>
+
+
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">МА</div>
+    <div>
+      <h1>Маңғыстау — Киелі жерлер</h1>
+      <p class="lead">Бекет-ата, Шопан-ата, Шақпақ-ата, Отпан-тау және басқа да нысандар.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls">
+      <input id="q" type="text" placeholder="Іздестіру — мысалы: 'Бекет-ата'">
+      <div class="filters">
+        <button class="chip active" data-filter="all">Барлығы</button>
+        <button class="chip" data-filter="мазар">Мазар</button>
+        <button class="chip" data-filter="үңгір">Үңгір</button>
+        <button class="chip" data-filter="таулар">Тау</button>
+		<button class="chip" data-filter="құдық">Құдық</button>
+      </div>
+    </section>
+
+    <div class="layout">
+      <section>
+        <div id="cards" class="cards"></div>
+        <div id="nores" style="display:none;text-align:center;color:var(--muted);padding:20px">Іздеу табылған жоқ.</div>
+      </section>
+
+      <aside>
+        <div class="mapcard">
+          <strong>Карта</strong>
+          <iframe class="map" src="https://maps.google.com/maps?q=43.6550,51.1711&z=8&output=embed"></iframe>
+		  
+		  <!-- Гид профиль карточкасы -->
+<div class="guide-card" style="display:flex;gap:14px;align-items:center;padding:14px;border-radius:16px;background:#f9fafb;border:1px solid rgba(0,0,0,0.05);box-shadow:0 6px 16px rgba(0,0,0,0.06);transition:transform 0.25s ease, box-shadow 0.25s ease;">
+  <img src="https://ep00.epimg.net/elviajero/imagenes/2019/03/12/album/1552413187_226567_1552413862_album_normal.jpg" alt="Гидтің фотосы" style="width:90px;height:90px;border-radius:50%;object-fit:cover;box-shadow:0 3px 8px rgba(0,0,0,0.1);">
+  <div>
+    <strong style="font-size:15px;">Бесмағанбетов Бағдат</strong>
+    <div style="color:#4b5563;font-size:13px;margin:6px 0;">Маңғыстау өңірі бойынша кәсіби гид — Бозжыра, Шерқала, Түпқараған бағытындағы турлар.</div>
+    <a href="https://www.instagram.com/bagdat_besmaganbetov?igsh=anNyMXlhNTdiN3I=" target="_blank" rel="noopener" 
+       style="display:inline-block;padding:8px 14px;border-radius:8px;
+              background:linear-gradient(45deg,#f58529,#dd2a7b,#8134af,#515bd4);
+              color:white;text-decoration:none;font-weight:600;
+              transition:background 0.3s ease;">
+      Instagram парақшасы
+    </a>
+  </div>
+</div>
+
+<style>
+.guide-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 22px rgba(0,0,0,0.12);
+}
+
+header {
+  animation: fadeInDown 1s ease forwards;
+  opacity: 0;
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+iframe.map {
+  border-radius: 16px;
+  box-shadow: 0 8px 26px rgba(0,0,0,0.15);
+  transition: transform 0.3s ease;
+}
+
+iframe.map:hover {
+  transform: scale(1.02);
+}
+
+@keyframes bar {
+  from { height: 6px; opacity: 0.5; }
+  to { height: 18px; opacity: 1; }
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeIn 0.8s ease forwards;
+}
+.card:nth-child(1) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.4s; }
+.card:nth-child(3) { animation-delay: 0.6s; }
+.card:nth-child(4) { animation-delay: 0.2s; }
+.card:nth-child(5) { animation-delay: 0.4s; }
+.card:nth-child(6) { animation-delay: 0.6s; }
+.card:nth-child(7) { animation-delay: 0.2s; }
+.card:nth-child(8) { animation-delay: 0.4s; }
+.card:nth-child(9) { animation-delay: 0.6s; }
+.card:nth-child(10) { animation-delay: 0.2s; }
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#intro {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, #06b6d4, #f97316);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  z-index: 9999;
+  opacity: 0;
+  backdrop-filter: blur(0px);
+  animation: introMagic 4s ease forwards;
+  overflow: hidden;
+}
+
+/* Интро фонында анимациялық жарық қозғалады */
+#intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.6), transparent 60%);
+  animation: glowMove 4s ease-in-out infinite alternate;
+}
+
+@keyframes glowMove {
+  0% { transform: scale(1) translate(0, 0); opacity: 0.6; }
+  50% { transform: scale(1.2) translate(10%, -10%); opacity: 0.9; }
+  100% { transform: scale(1.4) translate(-10%, 10%); opacity: 0.4; }
+}
+
+/* Негізгі интроның кіріп-шығу анимациясы */
+@keyframes introMagic {
+  0% {
+    opacity: 0;
+    transform: scale(0.9);
+    filter: blur(20px);
+  }
+  15% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  85% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(1.1);
+    filter: blur(30px);
+    visibility: hidden;
+  }
+}
+
+.card {
+  opacity: 0;
+  transform: translateY(40px) scale(0.95);
+}
+.card.animation-start {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+.card.animation-start:nth-child(1) { animation-delay: 0.2s; }
+.card.animation-start:nth-child(2) { animation-delay: 0.4s; }
+.card.animation-start:nth-child(3) { animation-delay: 0.6s; }
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px) scale(0.95);
+  }
+  60% {
+    opacity: 1;
+    transform: translateY(-4px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+
+
+
+
+
+
+</style>
+
+
+        </div>
+		
+		<div class="mapcard" style="margin-top:20px">
+  <strong>Маңғыстау туралы бейне</strong>
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; border-radius:10px; overflow:hidden; margin-top:8px;">
+    <iframe 
+      src="https://www.youtube.com/embed/_din7MwhHTI" 
+      title="Маңғыстау туралы видео"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+  
+  <div class="mapcard" style="margin-top:20px">
+  <strong>Бағдат гидіміз қатысқан Youtube видео</strong>
+  <div style="position: relative; width: 100%; padding-bottom: 56.25%; border-radius:10px; overflow:hidden; margin-top:8px;">
+    <iframe 
+      src="https://www.youtube.com/embed/BniGr1_gVZs" 
+      title="Гид Бесмағанбетов Бағдат — Маңғыстау туры"
+      style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+      allowfullscreen>
+    </iframe>
+  </div>
+</div>
+
+<div class="mapcard" style="margin-top:20px; text-align:center;">
+  <strong>Маңғаз Маңғыстаудың ұраны — Адай күйі</strong>
+  <div style="margin-top:10px; position:relative; display:inline-block; cursor:pointer;" onclick="openYoutube()">
+    <img 
+      src="https://qazaqgeography.kz/assets/media/oblast-mangystauskaya/1664890213-boszhira-valley-tract-mangystau-01.jpg" 
+      alt="Адай күйі — Маңғыстау"
+      style="width:100%; max-width:320px; border-radius:12px; box-shadow:0 6px 16px rgba(0,0,0,0.2); transition:transform 0.3s ease;"
+      onmouseover="this.style.transform='scale(1.05)';" 
+      onmouseout="this.style.transform='scale(1)';"
+    >
+    <div style="position:absolute; top:50%; left:50%; transform:translate(-50%, -50%);
+                background:rgba(0,0,0,0.6); border-radius:50%; width:68px; height:68px;
+                display:flex; align-items:center; justify-content:center;">
+      <svg xmlns="http://www.w3.org/2000/svg" fill="white" viewBox="0 0 24 24" width="38" height="38">
+        <path d="M8 5v14l11-7z"/>
+		<div id="musicBars" style="display:flex;gap:4px;justify-content:center;margin-top:8px;">
+  <div style="width:6px;height:12px;background:#06b6d4;border-radius:2px;animation:bar 0.5s infinite alternate;"></div>
+  <div style="width:6px;height:12px;background:#06b6d4;border-radius:2px;animation:bar 0.5s infinite alternate 0.2s;"></div>
+  <div style="width:6px;height:12px;background:#06b6d4;border-radius:2px;animation:bar 0.5s infinite alternate 0.4s;"></div>
+</div>
+
+      </svg>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
+
+      </aside>
+    </div>
+  </main>
+</div>
+  </script>
+
+
+  <footer>© 2025 — Маңғыстау</footer>
+
+  <div id="modal" class="modal">
+    <div class="modal-card">
+      <div>
+        <div id="modalImg" class="big"></div>
+        <button id="openMapBtn" class="btn" style="margin-top:10px">Картада ашу</button>
+      </div>
+      <div>
+        <h2 id="modalTitle"></h2>
+        <p id="modalType" style="color:var(--muted)"></p>
+        <p id="modalDesc" style="color:var(--muted)"></p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const PLACES = [
+      {title:'Бекет-ата', type:'мазар', img:'https://wildticketasia.com/uploads/posts/2023-04/1682595513_tour-beket-ata-mosque-1.jpg', coords:'44.7281,52.3419', desc:'Маңғыстаудың ең әйгілі жерасты мешіт-мазары.'},
+      {title:'Шопан-ата', type:'мазар', img:'https://wildticketasia.com/uploads/posts/2022-04/1648970426_shopan-ata-mosque-6.jpg', coords:'44.0580,52.9294', desc:'Тарихи және рухани маңызы зор әулие мекені.'},
+      {title:'Шақпақ-ата', type:'үңгір', img:'https://th.bing.com/th/id/R.a039629713aa79a02155f05dbef7dfa9?rik=woOHIJTdTqU%2fUQ&pid=ImgRaw&r=0', coords:'44.4983,52.0031', desc:'Үңгір ішіндегі ежелгі мешіт пен оюлар сақталған.'},
+      {title:'Отпан-тау', type:'таулар', img:'https://mangystau.inmap.kz/uploads/images/large_adaiata3__6761150f5a8415b606093786562939a7.jpg', coords:'44.330,52.620', desc:'Ұран оты жағылатын биік тау — ел бірлігінің нышаны.'},
+      {title:'Қараман-ата', type:'мазар', img:'https://wildticketasia.com/uploads/posts/2023-10/1696884836_karaman-ata-necropolis-11.jpg', coords:'44.3,52.1', desc:'Қараман-ата — түркі дәуірінен қалған қасиетті мекен.'},
+      {title:'Шерқала тауы', type:'таулар', img:'https://massaget.kz/userdata/news/news_39465/image_l.jpg', coords:'43.9,51.2', desc:'Шерқала атауы «Арыстанның тауы» деген мағына береді. Тау маңында ежелгі керуен жолдары мен тарихи қоныстардың іздері сақталған.'},
+      {title:'Бозжыра шатқалы', type:'таулар', img:'https://th.bing.com/th/id/R.e51d86c661c220cae2f8ff7e5331a107?rik=wCVjnS6PfIiF3A&pid=ImgRaw&r=0', coords:'43.6,52.2', desc:'Табиғи ғажайып, ақтастың ерекше пішіндерімен танымал.250 миллион жыл бұрын теңіз түбінен көтерілген әктасты қабаттардан түзілген.Қос мұнараға ұқсайтын атақты “Ата мен бала” шыңдары бар.аңертеңгі және кешкі күн сәулесімен түсі өзгереді — ақ, сары, күлгін түстерге боялады.Мұнда сирек кездесетін қарақұйрық, қарқара, ителгі сияқты жануарлар мекендейді.'},
+      {title:'Үстірт қорығы', type:'таулар', img:'https://qazaqstan3d.kz/upload/orig/place/650737_1504284049.jpg', coords:'44.0,51.6', desc:'Маңғыстау облысының солтүстігінде, Үстірт үстіртінің оңтүстік бөлігінде орналасқан ерекше қорғалатын табиғи аумақ. 1984 жылы құрылған. Қорықтың мақсаты — үстірттің шөлейт экожүйесін, жыртқыш аңдар мен сирек өсімдіктерді қорғау. Мұнда қарақұйрық, үкі, жорға торғай және басқа да сирек кездесетін жануарлар мекендейді..'},
+      {title:'Тамшалы шатқалы', type:'таулар', img:'https://womanadvice.ru/sites/default/files/tempos/kanon_tamshaly_0.jpg', coords:'43.5,51.8', desc:'Форт-Шевченко маңында орналасқан.Шөлдің ортасында ағаш өскен, жартастан су тамшылап ағатын ерекше табиғи құбылыс.Шатқалдың экожүйесі ерекше микроклиматқа ие.'},
+      {title:'Мырзайыр құдығы', type:'құдық', img:'https://tse4.mm.bing.net/th/id/OIP.x6au5L-jDXdq7uym_kdrqgHaD_?cb=12ucfimg=1&rs=1&pid=ImgDetMain&o=7&rm=3', coords:'43.7,52.1', desc:'Мырзайыр құдығы — Әбіш Кекілбаев атты қазақ жазушысы (абыз) туған жері ретінде аталады.Бұл жерде «Әбіш саябағы» атты мемориалдық аңғар ашылғаны туралы ақпарат бар.Мырзайыр — Маңғыстау ауданы (Қазақстан) ішіндегі «Үштаған құмының батыс беті» деп сипатталған ойпаң.'}
+    ];
+
+    const cardsEl=document.getElementById('cards');
+    const qEl=document.getElementById('q');
+    const chips=document.querySelectorAll('.chip');
+    const nores=document.getElementById('nores');
+    const modal=document.getElementById('modal');
+    const modalImg=document.getElementById('modalImg');
+    const modalTitle=document.getElementById('modalTitle');
+    const modalType=document.getElementById('modalType');
+    const modalDesc=document.getElementById('modalDesc');
+    const openMapBtn=document.getElementById('openMapBtn');
+
+    let active='all';
+    chips.forEach(ch=>ch.addEventListener('click',()=>{
+      chips.forEach(c=>c.classList.remove('active'));
+      ch.classList.add('active');
+      active=ch.dataset.filter;
+      apply();
+    }));
+    qEl.addEventListener('input',apply);
+
+    function render(places){
+      cardsEl.innerHTML='';
+      if(!places.length){nores.style.display='block';return}else nores.style.display='none';
+      places.forEach(p=>{
+        const card=document.createElement('div');
+        card.className='card';
+        card.innerHTML=`
+          <div class="thumb" style="background-image:url('${p.img}')"></div>
+          <div class="meta">
+            <h3>${p.title}</h3>
+            <p>${p.desc}</p>
+            <div class="tags"><span class="tag">${p.type}</span></div>
+          </div>`;
+        card.onclick=()=>openModal(p);
+        cardsEl.appendChild(card);
+      });
+    }
+
+    function apply(){
+      const q=qEl.value.toLowerCase();
+      const filtered=PLACES.filter(p=>{
+        if(active!=='all'&&p.type!==active)return false;
+        if(!q)return true;
+        return(p.title+p.desc).toLowerCase().includes(q);
+      });
+      render(filtered);
+    }
+
+    function openModal(p){
+      modal.classList.add('open');
+      modalImg.style.backgroundImage=`url('${p.img}')`;
+      modalTitle.textContent=p.title;
+      modalType.textContent=p.type;
+      modalDesc.textContent=p.desc;
+      openMapBtn.onclick=()=>window.open(`https://maps.google.com/?q=${p.coords}`,'_blank');
+    }
+
+    modal.onclick=e=>{if(e.target===modal)modal.classList.remove('open')};
+    apply();
+  </script>
+
+  <!-- Youtube ашу функциясы -->
+  <script>
+    function openYoutube() {
+      window.open("https://www.youtube.com/watch?v=H3okGH0uNNw", "_blank");
+    }
+  </script>
+  
+  <script>
+  window.addEventListener('load', () => {
+    setTimeout(() => {
+      document.getElementById('intro').style.display = 'none';
+    }, 3000); // 3 секундтан соң жоғалады
+  });
+</script>
+
+
+</body>
+</html>
+
+</body>
+</html>
